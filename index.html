@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Banking System</title>
+</head>
+<body>
+    <h2>Online Banking System</h2>
+
+    <h3>Login</h3>
+    <input type="text" id="user" placeholder="Username"><br><br>
+    <input type="password" placeholder="Password"><br><br>
+    <button onclick="login()">Login</button>
+
+    <h3>Bank Account</h3>
+    <p>Balance: Rs. <span id="balance">5000</span></p>
+
+    <input type="number" id="amount" placeholder="Enter Amount"><br><br>
+
+    <button onclick="deposit()">Deposit</button>
+    <button onclick="withdraw()">Withdraw</button>
+
+    <p id="result"></p>
+
+    <script>
+        let bal = 5000;
+
+        function login() {
+            alert("Login Successful!");
+        }
+
+        function deposit() {
+            let a = Number(document.getElementById("amount").value);
+            if(a > 0) {
+                bal += a;
+                update();
+            }
+        }
+
+        function withdraw() {
+            let a = Number(document.getElementById("amount").value);
+            if(a > 0 && a <= bal) {
+                bal -= a;
+                update();
+            }
+            else {
+                alert("Insufficient Balance!");
+            }
+        }
+
+        function update() {
+            document.getElementById("balance").innerHTML = bal;
+            document.getElementById("result").innerHTML =
+                "Transaction Successful!";
+        }
+    </script>
+</body>
+</html>
